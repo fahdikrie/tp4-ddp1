@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h1>Cari Budaya</h1>
+        <p>Masukkan data budaya yang ingin dicari</p>
+        
+        <form action="" method="POST">
+            <select name="metode pencarian" id="">
+                <option value="nama">Nama Budaya</option>
+                <option value="tipe">Tipe Budaya</option>
+                <option value="provinsi">Asal Provinsi Budaya</option>
+            </select>
+            <input type="text" name="nama" id="">
+            <input type="submit" value="Cari Budaya">
+        </form> 
+
+        <br>
+
+        {% if length is defined %}
+            {% if length != 0 %}
+                <table border="1">
+                    <tr>
+                        <th>Nama</th>
+                        <th>Tipe</th>
+                        <th>Provinsi</th>
+                        <th>URL</th>
+                    </tr>
+                    {% for i in cariState %}
+                    <tr>
+                        <td>{{ i.nama }}</td>
+                        <td>{{ i.tipe }}</td>
+                        <td>{{ i.prov }}</td>
+                        <td>{{ i.url }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            {% else %}
+                <h3>Maaf, data "{% print nama %}" yang anda cari tidak dapat ditemukan!</h3>
+            {% endif %}
+        {% endif %}
+
+        <!-- {% if not warning %}
+            {% if ubahState is defined %}
+                {% if ubahState %}
+                <h3>Data "{%print nama%}" telah berhasil diubah!</h3>
+                {% else %}
+                <h3>Data "{%print nama%}" tidak ditemukan! masuk ke <a href="/tambahBudaya">Tambah Budaya</a> Budaya jika anda ingin menambah data</h3>
+                {% endif %}    
+            {% endif %}
+        {% else %}
+        <h3>Anda belum mengimpor file, silahkan <a href="/imporBudaya">mengimpor file</a> terlebih dahulu untuk mengubah budaya</h3>
+        {% endif %} -->
+    </div>
+
+{% endblock content %}
+
+

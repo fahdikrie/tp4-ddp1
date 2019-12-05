@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h1>Tambah Budaya</h1>
+        <p>Masukkan data budaya yang ingin ditambahkan kedalam item</p>
+        
+        <form action="" method="POST">
+            Nama : <input type="text" name="nama" required> <br>
+            Tipe : <input type="text" name="tipe" required> <br>
+            Provinsi : <input type="text" name="provinsi" required> <br>
+            URL : <input type="text" name="url" required> <br>
+            <input type="submit" value="Tambah Data">
+        </form> 
+        
+        {% if not warning %}
+            {% if tambahState is defined %}
+                {% if tambahState %}
+                <h3>Data "{%print nama%}" telah berhasil ditambahkan!</h3>
+                {% else %}
+                <h3>Data "{%print nama%}" sudah ada! masuk ke laman <a href="/ubahBudaya">Ubah Budaya</a> jika anda ingin mengubah data</h3>
+                {% endif %}    
+            {% endif %}
+        {% else %}
+        <h3>Anda belum mengimpor file, silahkan <a href="/imporBudaya">mengimpor file</a> terlebih dahulu untuk menambahkan budaya</h3>
+        {% endif %}
+    </div>
+
+{% endblock content %}
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h1>Tambah Budaya</h1>
+        <p>Masukkan nama budaya yang ingin dihapus</p>
+        
+        <form action="" method="POST">
+            Nama : <input type="text" name="nama" required> <br>
+            <input type="submit" value="Hapus Budaya">
+        </form> 
+
+        {% if not warning %}
+            {% if hapusState is defined %}
+                {% if hapusState %}
+                <h3>Data "{%print nama%}" telah berhasil dihapus!</h3>
+                {% else %}
+                <h3>Data "{%print nama%}" tidak ditemukan! masuk ke <a href="/tambahBudaya">Tambah Budaya</a> Budaya jika anda ingin menambah data</h3>
+                {% endif %}    
+            {% endif %}
+        {% else %}
+        <h3>Anda belum mengimpor file, silahkan <a href="/imporBudaya">mengimpor file</a> terlebih dahulu untuk menghapus budaya</h3>
+        {% endif %}
+    </div>
+
+{% endblock content %}
+
+
+

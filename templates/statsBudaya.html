@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <h1>Statistik Budaya</h1>
+        <p>Pilih kategori statistik yang ingin anda lihat</p>
+        
+        <form action="" method="POST">
+            <select name="metode pencarian" id="">
+                <option value="nama">Nama Budaya</option>
+                <option value="tipe">Tipe Budaya</option>
+                <option value="provinsi">Asal Provinsi Budaya</option>
+            </select>
+            <input type="submit" value="Tampilkan Statistik">
+        </form> 
+
+        <br>
+
+        {% if length != 0 %}
+            {% if length is defined and length != cariState %}
+                <h3>Statistik data berdasarkan {% print nama %} budaya</h3>
+                <table border="1">
+                    <tr>
+                        <th>{% print nama %}</th>
+                        <th>Jumlah</th>
+                    </tr>
+                    {% for k,v in cariState.items() %}
+                    <tr>
+                        <td>{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% elif length is defined and length == cariState  %}
+                <h3>BudayaKB memiliki total {% print cariState %} data Budaya</h3>
+            {% endif %}
+        {% else %}
+            <h3>Anda belum mengimpor file, silahkan <a href="/imporBudaya">mengimpor file</a> terlebih dahulu untuk menambahkan budaya</h3>
+        {% endif %}
+    </div>
+
+{% endblock content %}
